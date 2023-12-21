@@ -1,0 +1,32 @@
+
+ 	 Check Design Report
+	 -------------------- 
+
+ Summary
+ ------- 
+
+                Name                 Total 
+-------------------------------------------
+Unresolved References                    0 
+Empty Modules                            0 
+Unloaded Port(s)                         0 
+Unloaded Sequential Pin(s)              38 
+Unloaded Combinational Pin(s)          245 
+Assigns                                139 
+Undriven Port(s)                         0 
+Undriven Leaf Pin(s)                     0 
+Undriven hierarchical pin(s)             2 
+Multidriven Port(s)                      0 
+Multidriven Leaf Pin(s)               3573 
+Multidriven hierarchical Pin(s)       2937 
+Multidriven unloaded net(s)              0 
+Constant Port(s)                         0 
+Constant Leaf Pin(s)                    20 
+Constant hierarchical Pin(s)         28310 
+Preserved leaf instance(s)               0 
+Preserved hierarchical instance(s)       0 
+Libcells with no LEF cell                0 
+Physical (LEF) cells with no libcell    17 
+Subdesigns with long module name         0 
+Physical only instance(s)                0 
+Logical only instance(s)                 0 

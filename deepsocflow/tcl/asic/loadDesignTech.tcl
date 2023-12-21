@@ -1,12 +1,13 @@
 # Load design
-set design     "proc_engine_out"
+set design     "dnn_engine"
 
-set libdir            "../pdk/tsmc65gp"
-set netlist           "../outputs/$design.out.v"
-set sdc               "../outputs/$design.out.sdc"
-set best_timing_lib 	"$libdir/lib/scadv10_cln65gp_lvt_ff_1p1v_m40c.lib"
-set worst_timing_lib 	"$libdir/lib/scadv10_cln65gp_lvt_ss_0p9v_125c.lib"
-set lef 		           { ../pdk/tsmc65gp/lef/tsmc_cln65_a10_4X2Z_tech.lef ../pdk/tsmc65gp/lef/tsmc65_lvt_sc_adv10_macro.lef}
+set libdir            "../asic/pdk/tsmc65lp"
+set netlist           "../asic/outputs/$design.out.v"
+set sdc               "../asic/outputs/$design.out.sdc"
+set best_timing_lib 	"../asic/pdk/tsmc65lp/lib/sc9_cln65lp_base_rvt_ff_typical_min_1p10v_m40c.lib ../asic/srams/sram_weights/sram_weights_ss_1p08v_1p08v_m40c.lib ../asic/srams/sram_edges/sram_edges_ss_1p08v_1p08v_m40c.lib"
+set worst_timing_lib 	"../asic/pdk/tsmc65lp/lib/sc9_cln65lp_base_rvt_ss_typical_max_1p08v_125c.lib ../asic/srams/sram_weights/sram_weights_ss_1p08v_1p08v_125c.lib ../asic/srams/sram_edges/sram_edges_ss_1p08v_1p08v_125c.lib"
+set lef 		           { ../asic/pdk/tsmc65lp/lef/sc9_tech.lef ../asic/pdk/tsmc65lp/lef/sc9_cln65lp_base_rvt.lef ../asic/srams/sram_weights/sram_weights.lef ../asic/srams/sram_edges/sram_edges.lef}
+
 # set best_captbl 	"$libdir/captbl/cln65g+_1p08m+alrdl_top2_cbest.captable"
 # set worst_captbl 	"$libdir/captbl/cln65g+_1p08m+alrdl_top2_cworst.captable"
 

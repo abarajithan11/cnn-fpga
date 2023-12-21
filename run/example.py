@@ -12,10 +12,10 @@ hw = Hardware (                          # Alternatively: hw = Hardware.from_jso
         bits_bias           = 16       , # bit width of bias
         max_batch_size      = 64       , # 
         max_channels_in     = 2048     , #
-        max_kernel_size     = 13       , #
+        max_kernel_size     = 7       , #
         max_image_size      = 512      , #
-        ram_weights_depth   = 20       , #
-        ram_edges_depth     = 288      , #
+        ram_weights_depth   = 512       , #
+        ram_edges_depth     = 2048      , #
         axi_width           = 64       , #
         target_cpu_int_bits = 32       , #
         valid_prob          = 1        , # probability in which AXI-Stream s_valid signal should be toggled in simulation

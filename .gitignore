@@ -5,8 +5,11 @@ temp/
 
 run/fpga/*
 
-run/asic/*
-!deepsocflow/asic/reports
+run/asic/pdk/tsmc65lp
+run/asic/outputs
+run/asic/constraints
+run/asic/srams/*
+!run/asic/srams/ram_asic.sv
 
 *.pickle
 deepsocflow/test/vectors
