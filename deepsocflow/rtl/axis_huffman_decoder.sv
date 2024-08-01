@@ -1,19 +1,20 @@
 `define K_BITS 4 // TODO:for testing only, remove after
+`define OR_NEGEDGE(RSTN)    or negedge RSTN
 module huffman_decoder #(
     parameter IN_WORD_WIDTH          = `K_BITS + 1 ,
     parameter OUT_WORD_WIDTH         = `K_BITS     ,
     parameter BITS_SHIFT_CNTR        = $clog2(3*IN_WORD_WIDTH)
 )
 (
-    input logic clk, resetn;
+    input logic clk, resetn,
 
-    input  logic [IN_WORD_WIDTH-1:0] s_data;
-    input  logic s_valid;
-    output logic  s_ready;
+    input  logic [IN_WORD_WIDTH-1:0] s_data,
+    input  logic s_valid,
+    output logic  s_ready,
 
-    input m_ready;
-    output [OUT_WORD_WIDTH-1:0] m_data;
-    output m_valid;
+    input  logic m_ready,
+    output logic [OUT_WORD_WIDTH-1:0] m_data,
+    output logic m_valid
 );
 
 logic [3*IN_WORD_WIDTH-1:0] buffer;
@@ -26,7 +27,7 @@ assign m_valid = (shift_counter > 0) ? 1'b1 : 1'b0;
 assign s_ready = (shift_counter <= 2*IN_WORD_WIDTH) ? 1'b1 : 1'b0;
 
 assign in_handshake = s_valid & s_ready;
-assign out_handshake = m_valid & m_data;
+assign out_handshake = m_valid & m_ready;
 
 // Shift Counter Update - keeps track of how many positions in the buffer are filled.
 always@(posedge clk `OR_NEGEDGE(resetn)) begin
@@ -53,7 +54,7 @@ end
 // BUffer Write/Shift
 genvar i;
 generate
-    for (i=0; i < 3*IN_WORD_WIDTH; i++) begin
+    for (i=0; i < 3*IN_WORD_WIDTH; i++) begin : decode_buffer
         always@(posedge clk `OR_NEGEDGE(resetn)) begin
             if (~resetn) begin
                 buffer[i] <= 0;
@@ -87,23 +88,5 @@ generate
     end
 endgenerate
 
-// always@(posedge clk `OR_NEGEDGE(resetn)) begin
-//     if(~resetn) begin
-//         buffer <= 0;
-//     end
-//     else begin
-//         if (m_valid && m_ready) begin
-//             if(buffer[0]) begin
-//                 buffer <= buffer << IN_WORD_WIDTH;
-//                 // TODO : cntr decrement
-//                 //shift_counter <= shift_counter - IN_WORD_WIDTH;
-//             end
-//             else begin
-//                 buffer <= buffer << 1;
-//                 //shift_counter <= shift_counter - 1;
-//             end
-//         end
-//     end
-// end
 
 endmodule
